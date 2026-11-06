@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)file:///C:/Users/jonat/OneDrive/Archives/Bureau/PointsExpe/Points.html -->
+<html lang="fr" style="--action-zoom: 1; --vh: 5.513333129882812px; --pc-cols: 11; --pc-avatar: 48px; --pc-font: 16px; --actions-h: 158.6666717529297px;" data-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport">
+<title>Points Expé</title>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff' stop-opacity='.9'/%3E%3Cstop offset='40%25' stop-color='%23ffd166'/%3E%3Cstop offset='100%25' stop-color='%23f4a261'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='26' fill='url(%23g)' stroke='%232c3e50' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%232c3e50' stroke-width='3' stroke-dasharray='4 3'/%3E%3Cpath d='M32 14 L36 24 L47 24 L38 30 L41 41 L32 35 L23 41 L26 30 L17 24 L28 24 Z' fill='%232c3e50'/%3E%3C/svg%3E" rel="icon">
+<style>
+:root{
+  --actions-h: 120px; --vh: 1vh;
+  --action-zoom: 1;
+  /* Thème Clair */
+  --bg:#f6f7fb; --surface:#ffffff; --surface2:#fbfcff;
+  --ink:#101828; --ink2:#344054; --muted:#667085;
+  --line:rgba(16,24,40,.08);
+  --shadow: 0 8px 24px rgba(16,24,40,.08);
+  --accent:#2563eb;
+  --pc-cols: 4; --pc-gap: 10px; --pc-avatar: 52px; --pc-font: 12px;
+}
+
+/* Thème Sombre */
+[data-theme="dark"] {
+  --bg:#111827; --surface:#1f2937; --surface2:#374151;
+  --ink:#f9fafb; --ink2:#d1d5db; --muted:#9ca3af;
+  --line:rgba(255,255,255,.1);
+  --shadow: 0 8px 24px rgba(0,0,0,.4);
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{ margin:0; font-family: 'Comic Sans MS', 'Comic Sans', sans-serif; background:var(--bg); color:var(--ink); padding-bottom: calc(var(--actions-h) + env(safe-area-inset-bottom, 0px)); overflow-x: hidden; transition: background 0.3s, color 0.3s; }
+
+header{ position: sticky; top: 0; z-index: 200; background: var(--surface); opacity: 0.95; border-bottom: 1px solid var(--line); padding: 12px 16px; display:flex; align-items:center; justify-content:space-between; gap: 12px; transition: background 0.3s; }
+.head-left{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.title{font-weight:900;color: var(--ink); display: flex; align-items: center;}
+.app-icon{width:24px;height:24px;vertical-align:middle;margin-right:10px;border-radius:6px;display:inline-block}
+.ver{margin-left:8px;font-size:12px;font-weight:800;color:#94a3b8;border:1px solid var(--line);padding:2px 7px;border-radius:999px;}
+.meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.meta .field{display:flex;align-items:center;gap:8px;background: var(--surface);border:1px solid var(--line);border-radius: 14px;padding: 8px 10px;}
+.meta label{font-size:12px;color:var(--muted);white-space:nowrap}
+.meta input{border:none;outline:none;background:transparent;color:var(--ink);font-size:13px;}
+#classNameInput{width:110px;}
+input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(var(--dark-invert, 0)); }
+[data-theme="dark"] { --dark-invert: 1; }
+
+.top-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;position:relative}
+.icon-btn,.tool-btn{width:40px;height:40px;border-radius: 14px;border: 1px solid var(--line);background: var(--surface);color: var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow: 0 2px 10px rgba(0,0,0,.06); transition: background 0.3s, border 0.3s;}
+.icon-btn:hover,.tool-btn:hover{box-shadow: var(--shadow)}
+
+.menu{position:absolute;right:0;top:52px;background: var(--surface);border: 1px solid var(--line);border-radius: 16px;box-shadow: var(--shadow);padding: 8px;width: 240px;z-index: 2000;display:none;}
+.menu.open{display:block}
+.menu button{width:100%;text-align:left;border:none;background:transparent;padding:10px 12px;border-radius: 12px;cursor:pointer;font-size:14px;color: var(--ink);}
+.menu button:hover{background: var(--surface2)}
+.menu .danger{color: #ef4444;font-weight:800}
+.menu-sep{border:none;border-top:1px solid var(--line);margin:6px 0}
+
+.teams-bar { display: flex; gap: 10px; padding: 10px 16px; background: var(--surface2); border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+.team-card { flex: 1; min-width: 140px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+.team-card.selected { border-color: rgba(37,99,235,.85); background: rgba(37,99,235,.15); box-shadow: 0 0 0 3px rgba(37,99,235,.25); }
+.team-info { display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 14px; }
+.team-points { font-size: 16px; font-weight: 900; background: var(--bg); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); }
+
+.listbar{display:flex;gap:10px;align-items:center;padding: 12px 16px 0;}
+.listbar button{border: 1px solid var(--line);border-radius: 14px;padding: 10px 12px;cursor:pointer;background: var(--surface);color: var(--ink);font-size: 14px;}
+.listbar button.good{border-color: rgba(22,163,74,.30);background: rgba(22,163,74,.15);color: #16a34a;font-weight:800;}
+.listbar .spacer{flex:1}
+
+.container{ display:grid !important; grid-template-columns: repeat(var(--pc-cols), 1fr) !important; gap: var(--pc-gap) !important; padding: 16px; align-content: stretch !important; min-height: calc((var(--vh, 1vh) * 100) - 180px - var(--actions-h)) !important; }
+.card{ background: var(--surface) !important; border: 1px solid var(--line); border-radius: 18px; text-align:center; padding: 10px !important; cursor:pointer; position: relative; box-shadow: 0 2px 14px rgba(0,0,0,.06); transition: transform .12s ease; user-select:none; overflow:hidden; font-size: var(--pc-font) !important; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.card.selected{border-color: rgba(37,99,235,.85) !important; background: rgba(37,99,235,.15) !important; box-shadow: 0 0 0 4px rgba(37,99,235,.25), var(--shadow) !important; transform: translateY(-2px) scale(1.02) !important;}
+.card.absent{opacity: .4; filter: grayscale(1);}
+
+.absent-badge{position:absolute; top: 8px; right: 8px; font-size: 10px; font-weight: 900; background: rgba(0,0,0,.80); color:#fff; padding: 4px 6px; border-radius: 999px;}
+
+/* Points en cercle parfait et texte ajusté */
+.points{
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--ink);
+  background: var(--surface);
+  opacity: 0.95;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+}
+
+.avatar-wrap{width: var(--pc-avatar) !important; height: var(--pc-avatar) !important; margin:0 auto 8px; display:flex; align-items:center; justify-content:center}
+.avatar{width: 100% !important; height: 100% !important; border-radius: 50%; background: rgba(128,128,128,.1); display:flex; align-items:center; justify-content:center; font-size: calc(var(--pc-avatar) * 0.5) !important; overflow:hidden;}
+.name{font-weight:900; margin-bottom:0; font-size: 1em; line-height:1.2;}
+
+.actions{ position: fixed !important; left: 0; right: 0; bottom: 0; z-index: 180; background: var(--surface); opacity: 0.95; border-top: 1px solid var(--line); display:grid !important; grid-template-columns: repeat(6, minmax(0, 1fr)) !important; gap: 10px !important; padding: 10px !important; }
+@media (max-width: 900px){ .actions{ grid-template-columns: repeat(4, minmax(0,1fr)) !important; } }
+@media (max-width: 620px){ .actions{ grid-template-columns: repeat(3, minmax(0,1fr)) !important; } }
+
+/* Boutons d'action redimensionnables via var(--action-zoom) */
+.action-btn{width:100%; height: calc(64px * var(--action-zoom)) !important; border-radius: 16px; border: 1px solid var(--line); cursor:pointer; background: var(--surface); display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 4px; box-shadow: 0 2px 10px rgba(0,0,0,.06);}
+.action-btn .lbl{font-size: calc(13px * var(--action-zoom)); font-weight:800; line-height: 1.1; color: var(--ink);}
+.action-btn .val{font-size: calc(15px * var(--action-zoom)); font-weight:900; color: var(--ink);}
+.action-btn .emoji{font-size: calc(22px * var(--action-zoom));}
+.plus1{background: rgba(22,163,74,.10); border-color: rgba(22,163,74,.30)}
+.minus5{background: rgba(239,68,68,.15); border-color: rgba(239,68,68,.30)}
+
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom: 132px;background: rgba(17,17,17,.92);color:#fff;padding: 16px 20px;border-radius: 20px;z-index: 800;opacity:0;pointer-events:none;transition: opacity .18s ease, transform .18s ease;font-size: 16px;display:flex;gap:12px;align-items:center;}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(-6px);}
+.toast .t-emoji{font-size:24px;} .toast .t-title{font-weight:900;} .toast .t-sub{opacity:.85; font-size:13px;}
+
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:flex-start;justify-content:center;z-index:1000;padding:18px;overflow:auto}
+.modal{width: 740px; max-width: 100%;background: var(--surface);border: 1px solid var(--line);border-radius: 18px;padding: 18px;box-shadow: var(--shadow);max-height: 90vh;overflow: auto;}
+.modal h3{margin:0 0 10px;font-size:18px}
+.modal p{margin:0 0 12px;font-size:13px;color:var(--muted)}
+.modal button{padding:10px 12px;border-radius: 14px;cursor:pointer;font-size: 14px;border: 1px solid var(--line);background: var(--surface);color: var(--ink);}
+.modal button.primary{border:none;background: var(--accent);color:#fff;font-weight:800;}
+.modal button.danger{border:1px solid rgba(239,68,68,.3)!important;background: rgba(239,68,68,.1)!important;color:#ef4444!important;font-weight:800;}
+.manage-list{display:flex;flex-direction:column;gap:10px;max-height:55vh;overflow:auto;}
+.manage-item{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius: 18px;padding: 10px;background: var(--surface2);}
+.mini-btn{width:46px;height:46px;border-radius:12px;background: var(--surface);border: 1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer; transition: transform 0.1s, box-shadow 0.1s;}
+.mini-btn:hover{transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1);}
+.input-like{width:100%;padding:10px;border-radius:12px;border:1px solid var(--line);font-size:14px;background: var(--surface);color: var(--ink);}
+.log-line{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:16px;padding:10px;background:var(--surface2);font-size:13px}
+.log-pill{min-width:58px;padding:6px 8px;border-radius:999px;background:var(--accent);color:#fff;font-weight:900;text-align:center;}
+
+.emoji-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(45px, 1fr)); gap: 8px; max-height: 350px; overflow-y: auto; padding: 10px; }
+.emoji-btn { font-size: 26px; padding: 8px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface2); cursor: pointer; transition: transform 0.1s, background 0.1s; display: flex; align-items: center; justify-content: center; }
+.emoji-btn:hover { transform: scale(1.15); background: var(--bg); z-index: 10; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.15);}
+
+@media (max-width: 620px){
+  header{ padding: 8px 10px; gap: 8px; } .title{font-size:14px;} .meta{ display:none; } .top-actions{flex-wrap:nowrap; gap:6px} .icon-btn,.tool-btn{width:36px;height:36px;font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="head-left">
+<div class="title"><img alt="Points Expé" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff' stop-opacity='.9'/%3E%3Cstop offset='40%25' stop-color='%23ffd166'/%3E%3Cstop offset='100%25' stop-color='%23f4a261'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='26' fill='url(%23g)' stroke='%232c3e50' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%232c3e50' stroke-width='3' stroke-dasharray='4 3'/%3E%3Cpath d='M32 14 L36 24 L47 24 L38 30 L41 41 L32 35 L23 41 L26 30 L17 24 L28 24 Z' fill='%232c3e50'/%3E%3C/svg%3E" class="app-icon">Points Expé <span class="ver">v2.10</span></div>
+<div class="meta">
+<div class="field"><label>Classe</label><input type="text" id="classNameInput" placeholder="ex: Groupe 402"></div>
+<div class="field"><label>Date</label><input type="date" id="appDate"></div>
+</div>
+</div>
+<div class="top-actions">
+<button class="icon-btn" id="btnThemeToggle" title="Mode Sombre">☀️</button>
+<button class="tool-btn" id="btnPickRandom" title="Sélection aléatoire">🎲</button>
+<button class="tool-btn" id="btnManageStudentsTop" title="Gérer les élèves">👥</button>
+<button class="tool-btn" id="btnManageCompetencesTop" title="Gérer les compétences">🧠</button>
+<button class="tool-btn" id="btnMakeGroups" title="Créer des équipes">👥</button>
+<button class="tool-btn" id="btnHistory" title="Historique">📜</button>
+<button class="tool-btn" id="btnWhiteboardTop" title="Tableau blanc">🖍️</button>
+<button class="tool-btn" id="btnMute" title="Son">🔊</button>
+<button class="icon-btn" id="btnMenuToggle" title="Menu">⋯</button>
+<div class="menu" id="menuDrop">
+<button id="btnAvatarZoomIn">🔍 Avatars +</button>
+<button id="btnAvatarZoomOut">🔍 Avatars −</button>
+<button id="btnAvatarZoomReset">🔍 Avatars 100%</button>
+<hr class="menu-sep">
+<button id="btnActionZoomIn">🔍 Compétences +</button>
+<button id="btnActionZoomOut">🔍 Compétences −</button>
+<button id="btnActionZoomReset">🔍 Compétences 100%</button>
+<hr class="menu-sep">
+<button id="btnExport">Exporter les données</button>
+<button id="btnImport">Importer des données</button>
+<hr class="menu-sep">
+<button class="danger" id="btnReset">Remettre à zéro</button>
+</div>
+</div>
+</header>
+
+<div class="teams-bar" id="teamsBar" style="display: none;"></div>
+<div class="listbar">
+<button class="good" id="btnSelectAll">✅ Tous</button>
+<button id="btnDeselect">⛔ Aucun</button>
+<div class="spacer"></div>
+<button id="btnToggleAbsent" title="Marquer absents/présents">🗓️ Abs/Prés</button>
+</div>
+<div class="container" id="eleves"><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">😀</div></div><div class="name">Élève 1</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">😎</div></div><div class="name">Élève 2</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🤓</div></div><div class="name">Élève 3</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🤠</div></div><div class="name">Élève 4</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🤡</div></div><div class="name">Élève 5</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">👽</div></div><div class="name">Élève 6</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🤖</div></div><div class="name">Élève 7</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">👾</div></div><div class="name">Élève 8</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🎃</div></div><div class="name">Élève 9</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🦁</div></div><div class="name">Élève 10</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🐯</div></div><div class="name">Élève 11</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🦄</div></div><div class="name">Élève 12</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🐨</div></div><div class="name">Élève 13</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🐼</div></div><div class="name">Élève 14</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🐸</div></div><div class="name">Élève 15</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🦖</div></div><div class="name">Élève 16</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🦋</div></div><div class="name">Élève 17</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🦸</div></div><div class="name">Élève 18</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🧙</div></div><div class="name">Élève 19</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🧛</div></div><div class="name">Élève 20</div><div class="points">10</div></div><div class="card"><div class="avatar-wrap"><div class="avatar" style="background:#3b82f6">🥷</div></div><div class="name">Élève 21</div><div class="points">10</div></div></div>
+<div class="actions" id="actions"><button class="action-btn plus1"><div class="emoji">⭐</div><div class="val">+1</div><div class="lbl">Au travail</div></button><button class="action-btn plus1"><div class="emoji">🤝</div><div class="val">+2</div><div class="lbl">Entraide</div></button><button class="action-btn plus1"><div class="emoji">👀</div><div class="val">+3</div><div class="lbl">Travail d'équipe</div></button><button class="action-btn plus1"><div class="emoji">✋</div><div class="val">+4</div><div class="lbl">Participation</div></button><button class="action-btn plus1"><div class="emoji">🧹</div><div class="val">+5</div><div class="lbl">Tâche</div></button><button class="action-btn plus1"><div class="emoji">🏆</div><div class="val">+10</div><div class="lbl">Lecture d'un roman</div></button><button class="action-btn minus5"><div class="emoji">⚠️</div><div class="val">-1</div><div class="lbl">Correction</div></button><button class="action-btn minus5"><div class="emoji">✨</div><div class="val">-5</div><div class="lbl">Collation spéciale</div></button><button class="action-btn minus5"><div class="emoji">🎯</div><div class="val">-10</div><div class="lbl">Chaise spéciale</div></button><button class="action-btn minus5"><div class="emoji">⚡</div><div class="val">-25</div><div class="lbl">Pop-Corn</div></button><button class="action-btn minus5"><div class="emoji">💪</div><div class="val">-50</div><div class="lbl">Période libre</div></button><button class="action-btn minus5"><div class="emoji">✅</div><div class="val">-100</div><div class="lbl">Film</div></button></div>
+
+<script>
+(function(){
+  const lsGet = (k)=> localStorage.getItem('points_expe_v2_10:' + k) || localStorage.getItem(k);
+  const lsSet = (k, v)=> localStorage.setItem('points_expe_v2_10:' + k, v);
+
+  // ===== GESTION THÈME =====
+  const btnTheme = document.getElementById('btnThemeToggle');
+  let isDark = lsGet('darkMode') === '1';
+  if(isDark) document.documentElement.setAttribute('data-theme', 'dark');
+  btnTheme.textContent = isDark ? '☀️' : '🌙';
+  
+  btnTheme.onclick = () => {
+    isDark = !isDark;
+    if(isDark) document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+    lsSet('darkMode', isDark ? '1' : '0');
+    btnTheme.textContent = isDark ? '☀️' : '🌙';
+  };
+
+  // ===== BIBLIOTHÈQUES D'ÉMOJIS =====
+  const LISTE_AVATARS = ['😀','😎','🤓','🤠','🤡','👻','👽','🤖','👾','🎃','🐵','🐶','🦊','🐱','🦁','🐯','🦄','🐼','🐨','🐸','🦖','🐙','🦋','🍎','🍕','⚽','🏀','🎮','🎸','🚀','🌈','🎨','🦸','🧙','🧛','🥷'];
+  const LISTE_COMPETENCES = ['🛠️','✋','💪','🧠','⭐','✅','🎯','🏆','💡','💬','🤝','🎲','⚠️','⛔','❌','⚡','🔥','✨','💯','🎓','⏱️','🏃','👀','👂','📚','📝','🎨','🧹','🗑️','❤️','🔧','🔨','🔍','📢'];
+
+  // ===== GESTION ZOOM COMPÉTENCES =====
+  const root = document.documentElement;
+  let actionZoom = parseFloat(lsGet('actionZoom') || '1');
+  function applyActionZoom() {
+    root.style.setProperty('--action-zoom', String(actionZoom));
+    setActionsH();
+  }
+  applyActionZoom();
+
+  function setVH(){ root.style.setProperty('--vh', ((window.visualViewport?.height || window.innerHeight) * 0.01) + 'px'); }
+  
+  function setActionsH(){ 
+    const el = document.getElementById('actions'); 
+    if(el) {
+      requestAnimationFrame(()=> {
+        root.style.setProperty('--actions-h', Math.max(56, el.getBoundingClientRect().height) + 'px');
+        fitStudentGrid();
+      });
+    }
+  }
+  
+  function fitStudentGrid(){
+    const grid = document.getElementById('eleves'); if (!grid) return;
+    const n = Math.max(1, eleves.length), rect = grid.getBoundingClientRect(), w = Math.max(240, rect.width), h = Math.max(200, rect.height), gap = 10;
+    let best = {cols: Math.min(6, n), score: 0, card: 0};
+    for (let cols = 1; cols <= Math.min(n, 12); cols++){
+      const rows = Math.ceil(n / cols), score = Math.min((w - gap * (cols - 1)) / cols, (h - gap * (rows - 1)) / rows);
+      if (score > best.score) best = {cols, score, card: score};
+    }
+    const card = Math.max(64, best.card), zoom = parseFloat(lsGet('avatarZoom') || '1');
+    root.style.setProperty('--pc-cols', String(best.cols));
+    root.style.setProperty('--pc-avatar', (Math.max(30, Math.min(80, card * 0.45)) * zoom).toFixed(0) + 'px');
+    root.style.setProperty('--pc-font', (Math.max(11, Math.min(16, card * 0.16))).toFixed(0) + 'px');
+  }
+  
+  window.addEventListener('resize', ()=>{ setVH(); setActionsH(); }, {passive:true}); 
+  setVH(); setActionsH();
+
+  // ===== DONNÉES =====
+  let eleves = JSON.parse(lsGet('eleves') || 'null') || Array.from({length: 12}, (_, i) => ({ nom: 'Élève ' + (i+1), points: 0, avatar: '😀', color: '#3b82f6', absent: false }));
+  let actions = JSON.parse(lsGet('actions') || 'null') || [{ label: "Travail", value: 1, emoji: "🛠️" }, { label: "Surprise", value: -5, emoji: "🎲" }];
+  let equipes = JSON.parse(lsGet('teams') || 'null') || [];
+  let log = JSON.parse(lsGet('log') || 'null') || [];
+  let classNameVal = lsGet('className') || '';
+  
+  const selected = new Set(); const selectedTeams = new Set();
+  const saveAll = () => { 
+    lsSet('eleves', JSON.stringify(eleves)); 
+    lsSet('actions', JSON.stringify(actions)); 
+    lsSet('teams', JSON.stringify(equipes)); 
+    lsSet('log', JSON.stringify(log)); 
+    lsSet('className', classNameVal);
+  };
+
+  function clear(node){ while(node?.firstChild) node.removeChild(node.firstChild); }
+  function makeOverlay(zIndex = 1000){ const o = document.createElement('div'); o.className = 'overlay'; o.style.zIndex = zIndex; o.onclick = (e) => { if(e.target === o) o.remove(); }; document.body.appendChild(o); return o; }
+
+  // ===== SONS ET TOASTS =====
+  let toastTimer = null;
+  function showToast(emoji, title, sub){
+    let t = document.getElementById('toast');
+    if (!t){ t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; t.innerHTML = `<div class="t-emoji"></div><div class="t-body"><div class="t-title"></div><div class="t-sub"></div></div>`; document.body.appendChild(t); }
+    t.querySelector('.t-emoji').textContent = emoji; t.querySelector('.t-title').textContent = title; t.querySelector('.t-sub').textContent = sub || "";
+    t.classList.remove('show'); void t.offsetWidth; t.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(()=> t.classList.remove('show'), 4000);
+  }
+
+  let audioCtx = null; let muted = (lsGet('muted') === '1');
+  document.getElementById('btnMute').onclick = function() { muted = !muted; lsSet('muted', muted ? '1' : '0'); this.textContent = muted ? '🔇' : '🔊'; };
+  document.getElementById('btnMute').textContent = muted ? '🔇' : '🔊';
+
+  function playSound(val){
+    if (muted) return;
+    try{
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const ctx = audioCtx, now = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+      if (val === 'tick') {
+        o.type = "sine"; o.frequency.setValueAtTime(800, now);
+        g.gain.setValueAtTime(0, now); g.gain.linearRampToValueAtTime(0.05, now + 0.01); g.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+        o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now + 0.05);
+      } else {
+        o.type = val >= 0 ? "triangle" : "sawtooth"; o.frequency.setValueAtTime(val >= 0 ? 740 : 392, now);
+        g.gain.setValueAtTime(0.0001, now); g.gain.exponentialRampToValueAtTime(0.1, now + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, now + 0.15);
+        o.connect(g); g.connect(ctx.destination); o.start(now); o.stop(now + 0.2);
+      }
+    }catch(e){}
+  }
+
+  function pushLog(entry){ log.unshift(entry); if (log.length > 50) log.length = 50; saveAll(); }
+
+  // ===== RENDU UI =====
+  function renderTeams(){
+    const tb = document.getElementById('teamsBar'); clear(tb);
+    if(equipes.length === 0) { tb.style.display = 'none'; return; }
+    tb.style.display = 'flex';
+    equipes.forEach((eq, i) => {
+      const card = document.createElement('div');
+      card.className = 'team-card' + (selectedTeams.has(i) ? ' selected' : '');
+      card.onclick = ()=>{ selectedTeams.has(i) ? selectedTeams.delete(i) : selectedTeams.add(i); renderTeams(); };
+      card.innerHTML = `<div class="team-info">${eq.emoji || '👥'} ${eq.nom}</div><div class="team-points">${eq.points}</div>`;
+      tb.appendChild(card);
+    });
+  }
+
+  function renderEleves(){
+    const elContainer = document.getElementById('eleves'); clear(elContainer);
+    eleves.forEach((e, i) => {
+      const card = document.createElement('div');
+      card.className = 'card' + (e.absent ? ' absent' : '') + (selected.has(i) ? ' selected' : '');
+      card.onclick = ()=>{ selected.has(i) ? selected.delete(i) : selected.add(i); card.classList.toggle('selected', selected.has(i)); };
+      card.innerHTML = `<div class="avatar-wrap"><div class="avatar" style="background:${e.color || '#3b82f6'}">${e.avatar}</div></div><div class="name">${e.nom}</div><div class="points">${e.points}</div>${e.absent ? '<div class="absent-badge">ABS</div>' : ''}`;
+      elContainer.appendChild(card);
+    });
+    fitStudentGrid();
+  }
+
+  function renderActions(){
+    const actionBar = document.getElementById('actions'); clear(actionBar);
+    actions.forEach((a) => {
+      const btn = document.createElement('button');
+      btn.className = 'action-btn ' + (a.value >= 0 ? 'plus1' : 'minus5');
+      btn.innerHTML = `<div class="emoji">${a.emoji}</div><div class="val">${a.value >= 0 ? '+'+a.value : a.value}</div><div class="lbl">${a.label}</div>`;
+      btn.onclick = () => {
+        if(!selected.size && !selectedTeams.size) return;
+        const affected = [], bStudents = [], bTeams = [];
+        selected.forEach(i => { if(!eleves[i].absent) { bStudents.push({i, points: eleves[i].points}); eleves[i].points += Number(a.value); affected.push({nom: eleves[i].nom}); }});
+        selectedTeams.forEach(i => { bTeams.push({i, points: equipes[i].points}); equipes[i].points += Number(a.value); affected.push({nom: equipes[i].nom}); });
+        
+        if(affected.length > 0) {
+          pushLog({ ts: new Date().toISOString(), label: a.label, emoji: a.emoji, delta: a.value, affected, beforeStudents: bStudents, beforeTeams: bTeams });
+          showToast(a.emoji, `${a.label} (${a.value>0?'+'+a.value:a.value})`, affected.map(af=>af.nom).join(', '));
+          playSound(a.value);
+        }
+        selected.clear(); selectedTeams.clear(); saveAll(); renderEleves(); renderTeams();
+      };
+      actionBar.appendChild(btn);
+    });
+    setActionsH();
+  }
+
+  // ===== SÉLECTEUR D'ÉMOJIS =====
+  function openEmojiPicker(type, callback) {
+    const overlay = makeOverlay(1100); 
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.maxWidth = '420px';
+    modal.innerHTML = `<h3 style="text-align:center;">${type === 'avatars' ? '👤 Choisir un avatar' : '⭐ Choisir une icône'}</h3>`;
+    
+    const grid = document.createElement('div');
+    grid.className = 'emoji-grid';
+    
+    const liste = type === 'avatars' ? LISTE_AVATARS : LISTE_COMPETENCES;
+    liste.forEach(em => {
+      const btn = document.createElement('button');
+      btn.className = 'emoji-btn';
+      btn.textContent = em;
+      btn.onclick = () => {
+        callback(em);
+        overlay.remove();
+      };
+      grid.appendChild(btn);
+    });
+    
+    const btnClose = document.createElement('button');
+    btnClose.className = 'danger';
+    btnClose.textContent = 'Annuler';
+    btnClose.style.marginTop = '15px';
+    btnClose.style.width = '100%';
+    btnClose.onclick = () => overlay.remove();
+    
+    modal.appendChild(grid);
+    modal.appendChild(btnClose);
+    overlay.appendChild(modal);
+  }
+
+  // ===== OUTILS & INTERACTIONS =====
+  document.getElementById('btnPickRandom').onclick = () => {
+    const presents = eleves.map((e,i)=>({e,i})).filter(x => !x.e.absent);
+    if(!presents.length) return alert("Aucun élève présent.");
+    let ticks = 0; const maxTicks = 12;
+    const interval = setInterval(() => {
+      ticks++; const tempWinner = presents[Math.floor(Math.random() * presents.length)];
+      selected.clear(); selectedTeams.clear(); selected.add(tempWinner.i); renderEleves(); playSound('tick');
+      if (ticks >= maxTicks) {
+        clearInterval(interval); const winner = presents[Math.floor(Math.random() * presents.length)];
+        selected.clear(); selected.add(winner.i); renderEleves(); playSound(1); showToast("🎲", "Sélectionné :", winner.e.nom);
+        pushLog({ ts: new Date().toISOString(), label: "Sélection aléatoire", emoji: "🎲", delta: 0, affected: [{nom: winner.e.nom}] });
+      }
+    }, 150);
+  };
+
+  document.getElementById('btnManageStudentsTop').onclick = () => {
+    const overlay = makeOverlay(), modal = document.createElement('div'); modal.className = 'modal';
+    modal.innerHTML = `<h3>👥 Gérer les élèves</h3><p>Modifie le nom, clique sur l'émoji pour le changer ou supprime.</p>`;
+    const list = document.createElement('div'); list.className = 'manage-list';
+    
+    function renderStudentList(){
+      clear(list);
+      eleves.forEach((e, i) => {
+        const item = document.createElement('div'); item.className = 'manage-item';
+        
+        const avatarBtn = document.createElement('button'); 
+        avatarBtn.className = 'mini-btn'; 
+        avatarBtn.textContent = e.avatar;
+        avatarBtn.title = 'Changer d\'avatar';
+        avatarBtn.onclick = () => {
+          openEmojiPicker('avatars', (nouveauEmoji) => {
+            eleves[i].avatar = nouveauEmoji;
+            saveAll(); renderEleves(); renderStudentList();
+          });
+        };
+
+        const inp = document.createElement('input'); inp.className = 'input-like'; inp.value = e.nom;
+        inp.onchange = (ev) => { eleves[i].nom = ev.target.value; saveAll(); renderEleves(); };
+        
+        const right = document.createElement('div'); right.style.display = 'flex'; right.style.gap = '8px'; right.style.alignItems = 'center';
+        const lbl = document.createElement('label'); lbl.textContent = "Abs ";
+        const chk = document.createElement('input'); chk.type = 'checkbox'; chk.checked = e.absent;
+        chk.onchange = (ev) => { eleves[i].absent = ev.target.checked; saveAll(); renderEleves(); };
+        lbl.prepend(chk);
+        const delBtn = document.createElement('button'); delBtn.className = 'danger'; delBtn.textContent = '🗑';
+        delBtn.onclick = () => { eleves.splice(i, 1); saveAll(); renderEleves(); renderStudentList(); };
+        
+        right.appendChild(lbl); right.appendChild(delBtn); 
+        item.appendChild(avatarBtn); item.appendChild(inp); item.appendChild(right); 
+        list.appendChild(item);
+      });
+    }
+    
+    renderStudentList();
+    const btnAdd = document.createElement('button'); btnAdd.className = 'primary'; btnAdd.style.marginTop = '10px'; btnAdd.textContent = '➕ Ajouter un élève';
+    btnAdd.onclick = () => { eleves.push({nom: 'Nouveau', points: 0, avatar: '😀', color: '#3b82f6', absent: false}); saveAll(); renderEleves(); renderStudentList(); };
+    modal.appendChild(list); modal.appendChild(btnAdd); overlay.appendChild(modal);
+  };
+
+  document.getElementById('btnManageCompetencesTop').onclick = () => {
+    const overlay = makeOverlay(), modal = document.createElement('div'); modal.className = 'modal';
+    modal.innerHTML = `<h3>🧠 Gérer les compétences</h3><p>Clique sur l'icône pour la changer. Modifie le titre et la valeur.</p>`;
+    const list = document.createElement('div'); list.className = 'manage-list';
+    
+    function renderActionList(){
+      clear(list);
+      actions.forEach((a, i) => {
+        const item = document.createElement('div'); item.style = 'display:flex; gap:10px; align-items:center; border:1px solid var(--line); padding:10px; border-radius:12px; background: var(--surface2);';
+        
+        const emBtn = document.createElement('button');
+        emBtn.className = 'mini-btn';
+        emBtn.textContent = a.emoji;
+        emBtn.title = 'Changer l\'icône';
+        emBtn.onclick = () => {
+          openEmojiPicker('actions', (nouveauEmoji) => {
+            actions[i].emoji = nouveauEmoji;
+            saveAll(); renderActions(); renderActionList();
+          });
+        };
+        
+        const lb = document.createElement('input'); lb.className = 'input-like'; lb.value = a.label;
+        lb.onchange = (ev) => { actions[i].label = ev.target.value; saveAll(); renderActions(); };
+        
+        const vl = document.createElement('input'); vl.className = 'input-like'; vl.type = 'number'; vl.style.width = '80px'; vl.value = a.value;
+        vl.onchange = (ev) => { actions[i].value = Number(ev.target.value); saveAll(); renderActions(); };
+        
+        const delBtn = document.createElement('button'); delBtn.className = 'danger'; delBtn.textContent = '🗑';
+        delBtn.onclick = () => { actions.splice(i, 1); saveAll(); renderActions(); renderActionList(); };
+        
+        item.appendChild(emBtn); item.appendChild(lb); item.appendChild(vl); item.appendChild(delBtn); 
+        list.appendChild(item);
+      });
+    }
+    
+    renderActionList();
+    const btnAdd = document.createElement('button'); btnAdd.className = 'primary'; btnAdd.style.marginTop = '10px'; btnAdd.textContent = '➕ Ajouter une compétence';
+    btnAdd.onclick = () => { actions.push({label: 'Nouvelle', value: 1, emoji: '⭐'}); saveAll(); renderActions(); renderActionList(); };
+    modal.appendChild(list); modal.appendChild(btnAdd); overlay.appendChild(modal);
+  };
+
+  document.getElementById('btnMakeGroups').onclick = () => {
+    const overlay = makeOverlay(), modal = document.createElement('div'); modal.className = 'modal';
+    modal.innerHTML = `<h3>👥 Créer des équipes</h3><p>Combien d'équipes veux-tu créer avec les élèves présents ?</p>`;
+    
+    const inp = document.createElement('input'); inp.type = 'number'; inp.className = 'input-like'; inp.min = 1; inp.value = 4;
+    const btnGen = document.createElement('button'); btnGen.className = 'primary'; btnGen.style.marginLeft = '10px'; btnGen.textContent = 'Créer les équipes aléatoirement';
+    
+    btnGen.onclick = () => {
+      const num = Number(inp.value);
+      if(num < 1) return;
+      equipes = [];
+      const presents = eleves.map(e => e.nom).filter((_, i) => !eleves[i].absent);
+      const shuffled = presents.sort(() => 0.5 - Math.random());
+      
+      for(let i=1; i<=num; i++) equipes.push({ nom: 'Équipe '+i, points: 0, emoji: '🎯', members: [] });
+      shuffled.forEach((nom, index) => { equipes[index % num].members.push(nom); });
+
+      saveAll(); renderTeams(); overlay.remove(); 
+      showToast("👥", "Équipes créées", ""); playSound(1);
+      pushLog({ ts: new Date().toISOString(), label: "Création équipes", emoji: "👥", delta: 0, affected: [{nom: num + " équipes créées"}] });
+      
+      const w = window.open('', '_blank', 'width=900,height=600');
+      if(w) {
+        w.document.open();
+        w.document.write(`<!DOCTYPE html><html lang="fr"><head><title>Détails des Équipes</title><style>
+          body{font-family: 'Comic Sans MS', sans-serif; background:#f6f7fb; padding:20px; color:#101828;}
+          .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px;}
+          .team{background:#fff; padding:20px; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.06); border: 1px solid rgba(16,24,40,.08);}
+          h2{margin-top:0; border-bottom:3px solid #2563eb; padding-bottom:10px; text-align:center;}
+          ul{list-style:none; padding:0; margin:0;}
+          li{padding:10px 0; border-bottom:1px solid #f1f5f9; font-size:18px; text-align:center; font-weight: bold;}
+          li:last-child{border-bottom:none;}
+        </style></head><body>
+        <h1 style="text-align:center; font-size: 32px; margin-bottom: 30px;">👥 Nouvelles Équipes</h1>
+        <div class="grid">
+          ${equipes.map(eq => `<div class="team"><h2>${eq.emoji} ${eq.nom}</h2><ul>${eq.members.map(m => `<li>${m}</li>`).join('')}</ul></div>`).join('')}
+        </div>
+        </body></html>`);
+        w.document.close();
+      } else { alert("Les équipes ont été créées, mais ton navigateur a bloqué la fenêtre pop-up."); }
+    };
+    
+    const btnClear = document.createElement('button'); btnClear.className = 'danger'; btnClear.style.marginTop = '10px'; btnClear.style.display = 'block'; btnClear.textContent = 'Supprimer toutes les équipes';
+    btnClear.onclick = () => { equipes = []; saveAll(); renderTeams(); overlay.remove(); };
+    modal.appendChild(inp); modal.appendChild(btnGen); modal.appendChild(btnClear); overlay.appendChild(modal);
+  };
+
+  document.getElementById('btnHistory').onclick = () => {
+    const overlay = makeOverlay(), modal = document.createElement('div'); modal.className = 'modal';
+    modal.innerHTML = `<h3>📜 Historique</h3><p>Annule la dernière action.</p>`;
+    const list = document.createElement('div'); list.className = 'manage-list';
+    function renderLog(){
+      clear(list);
+      if(!log.length) { list.innerHTML = "<p>Aucune action.</p>"; return; }
+      log.forEach(e => {
+        const line = document.createElement('div'); line.className = 'log-line';
+        const d = new Date(e.ts); const time = d.getHours()+":"+String(d.getMinutes()).padStart(2,'0');
+        line.innerHTML = `<div class="log-pill">${e.delta >= 0 ? '+'+e.delta : e.delta}</div><div><div><b>${e.emoji} ${e.label}</b> → ${e.affected.map(a=>a.nom).join(', ')}</div><div style="font-size:11px; opacity:0.7;">${time}</div></div>`;
+        list.appendChild(line);
+      });
+    }
+    renderLog();
+    const btnUndo = document.createElement('button'); btnUndo.className = 'primary'; btnUndo.style.marginTop = '15px'; btnUndo.textContent = '↶ Annuler la dernière action';
+    btnUndo.onclick = () => {
+      if(!log.length) return;
+      const last = log.shift();
+      if(last.beforeStudents) last.beforeStudents.forEach(b => { if(eleves[b.i]) eleves[b.i].points = b.points; });
+      if(last.beforeTeams) last.beforeTeams.forEach(b => { if(equipes[b.i]) equipes[b.i].points = b.points; });
+      saveAll(); renderEleves(); renderTeams(); renderLog(); playSound(-1);
+    };
+    modal.appendChild(list); modal.appendChild(btnUndo); overlay.appendChild(modal);
+  };
+
+  document.getElementById('btnWhiteboardTop').onclick = () => {
+    const w = window.open('', '_blank', 'width=1200,height=800');
+    if(!w) return alert('Autorise les popups pour ouvrir le tableau blanc.');
+    w.document.open();
+    w.document.write(`<!DOCTYPE html><html lang="fr"><head><title>Tableau blanc</title><style>
+      body{margin:0;overflow:hidden;background:#fff;font-family:sans-serif;} canvas{display:block;cursor:crosshair;}
+      .tools{position:absolute;top:20px;left:50%;transform:translateX(-50%);display:flex;gap:12px;background:#f3f4f6;padding:12px 20px;border-radius:12px;box-shadow:0 8px 16px rgba(0,0,0,.15); align-items: center;}
+      button{padding:8px 14px;border:none;border-radius:8px;cursor:pointer;font-weight:bold; background:#fff; border: 1px solid #d1d5db;}
+      button:hover{background: #e5e7eb;}
+      .color{width:34px;height:34px;border-radius:50%;border:3px solid transparent;cursor:pointer;}
+      .active-color{border-color: #374151;}
+    </style></head><body>
+    <div class="tools">
+      <div class="color active-color" style="background:#0f172a" onclick="setColor(this, '#0f172a', 4)"></div>
+      <div class="color" style="background:#ef4444" onclick="setColor(this, '#ef4444', 4)"></div>
+      <div class="color" style="background:#3b82f6" onclick="setColor(this, '#3b82f6', 4)"></div>
+      <div class="color" style="background:#22c55e" onclick="setColor(this, '#22c55e', 4)"></div>
+      <div style="width: 2px; height: 30px; background: #cbd5e1; margin: 0 5px;"></div>
+      <button onclick="setColor(null, '#fff', 30)">🧹 Gomme</button>
+      <button onclick="ctx.clearRect(0,0,c.width,c.height)" style="color:#ef4444;">🗑️</button>
+    </div>
+    <canvas id="c"></canvas>
+    <script>
+      const c=document.getElementById("c"), ctx=c.getContext("2d"); c.width=window.innerWidth; c.height=window.innerHeight; ctx.strokeStyle='#0f172a'; ctx.lineWidth=4; ctx.lineCap='round';
+      let d=false; c.onmousedown=(e)=>{d=true;ctx.beginPath();ctx.moveTo(e.clientX,e.clientY)}; c.onmousemove=(e)=>{if(d){ctx.lineTo(e.clientX,e.clientY);ctx.stroke()}}; c.onmouseup=()=>d=false; c.onmouseout=()=>d=false;
+      function setColor(el, color, size) { ctx.strokeStyle = color; ctx.lineWidth = size; if(el) { document.querySelectorAll('.color').forEach(c => c.classList.remove('active-color')); el.classList.add('active-color'); } else { document.querySelectorAll('.color').forEach(c => c.classList.remove('active-color')); } }
+    <\/script></body></html>`);
+    w.document.close();
+  };
+
+  document.getElementById('btnSelectAll').onclick = () => { selected.clear(); eleves.forEach((_, i) => selected.add(i)); renderEleves(); };
+  document.getElementById('btnDeselect').onclick = () => { selected.clear(); selectedTeams.clear(); renderEleves(); renderTeams(); };
+  document.getElementById('btnToggleAbsent').onclick = () => { selected.forEach(i => eleves[i].absent = !eleves[i].absent); saveAll(); renderEleves(); };
+  document.getElementById('btnMenuToggle').onclick = () => { document.getElementById('menuDrop').classList.toggle('open'); };
+  
+  // Zooms Avatars
+  document.getElementById('btnAvatarZoomIn').onclick = () => { lsSet('avatarZoom', String(parseFloat(lsGet('avatarZoom')||'1') + 0.1)); fitStudentGrid(); };
+  document.getElementById('btnAvatarZoomOut').onclick = () => { lsSet('avatarZoom', String(parseFloat(lsGet('avatarZoom')||'1') - 0.1)); fitStudentGrid(); };
+  document.getElementById('btnAvatarZoomReset').onclick = () => { lsSet('avatarZoom', '1'); fitStudentGrid(); };
+  
+  // Zooms Compétences
+  document.getElementById('btnActionZoomIn').onclick = () => { actionZoom = Math.min(1.8, actionZoom + 0.1); lsSet('actionZoom', String(actionZoom)); applyActionZoom(); };
+  document.getElementById('btnActionZoomOut').onclick = () => { actionZoom = Math.max(0.5, actionZoom - 0.1); lsSet('actionZoom', String(actionZoom)); applyActionZoom(); };
+  document.getElementById('btnActionZoomReset').onclick = () => { actionZoom = 1; lsSet('actionZoom', '1'); applyActionZoom(); };
+
+  // Gestion Nom de classe
+  const classInput = document.getElementById('classNameInput');
+  if(classInput) {
+    classInput.value = classNameVal;
+    classInput.oninput = (e) => {
+      classNameVal = e.target.value;
+      saveAll();
+    };
+  }
+
+  document.getElementById('btnReset').onclick = () => {
+    if(confirm("Remettre tous les points à zéro ?")) { eleves.forEach(e => e.points = 0); equipes.forEach(eq => eq.points = 0); saveAll(); renderEleves(); renderTeams(); showToast("🧽", "Remise à zéro", ""); playSound(1); document.getElementById('menuDrop').classList.remove('open'); }
+  };
+  document.getElementById('btnExport').onclick = () => {
+    const blob = new Blob([JSON.stringify({ eleves, actions, equipes, log, className: classNameVal }, null, 2)], {type: "application/json"}); 
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "points-expe.json"; a.click(); 
+    document.getElementById('menuDrop').classList.remove('open');
+  };
+  document.getElementById('btnImport').onclick = () => {
+    const input = document.createElement('input'); input.type = 'file'; input.accept = 'application/json';
+    input.onchange = () => {
+      const file = input.files[0]; if(!file) return; const reader = new FileReader();
+      reader.onload = () => { 
+        try { 
+          const data = JSON.parse(reader.result); 
+          if(data.eleves) eleves = data.eleves; 
+          if(data.actions) actions = data.actions; 
+          if(data.equipes) equipes = data.equipes; 
+          if(data.log) log = data.log; 
+          if(data.className !== undefined) { 
+            classNameVal = data.className; 
+            classInput.value = classNameVal; 
+          } 
+          saveAll(); renderEleves(); renderTeams(); renderActions(); 
+          showToast("✅", "Importation réussie"); 
+        } catch(e) { alert("Fichier invalide."); } 
+      }; 
+      reader.readAsText(file);
+    }; 
+    input.click(); document.getElementById('menuDrop').classList.remove('open');
+  };
+
+  const today = new Date(); if(document.getElementById('appDate')) document.getElementById('appDate').value = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+  renderTeams(); renderEleves(); renderActions(); setTimeout(fitStudentGrid, 100);
+})();
+</script>
+
+<div id="toast" class="toast"><div class="t-emoji">🏆</div><div class="t-body"><div class="t-title">Lecture d'un roman (+10)</div><div class="t-sub">Élève 1, Élève 2, Élève 3, Élève 4, Élève 5, Élève 6, Élève 7, Élève 8, Élève 9, Élève 10, Élève 11, Élève 12, Élève 13, Élève 14, Élève 15, Élève 16, Élève 17, Élève 18, Élève 19, Élève 20, Élève 21</div></div></div></body></html>
